@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoCalc PHP</title>
+</head>
+<body>
+        <h2>Área do Quadrado</h2>
+        <p><strong>Descrição: </strong>Multiplicação de um lado pelo outro.</p>
+        <p><strong>Fórmula: </strong>área = lado x lado</p>
+        <form action="area_quadrado.php" method="POST">
+            <label for="lado">Digite a medida do lado (cm):</label>
+            <input type="number" step="0.01" name="lado" id="lado" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        <h2>Área do Retângulo</h2>
+        <p><strong>Descrição: </strong>Produto da base pela altura.</p>
+        <p><strong>Fórmula: </strong>área = base x altura</p>
+        <form action="area_retangulo.php" method="POST">
+            <label for="base">Digite a medida da base (cm):</label> 
+            <input type="number" step="0.01" name="base" id="base" required><br><br>
+            <label for="altura">Digite a medida da haltura (cm):</label>
+            <input type="number" step="0.01" name="altura" id="altura" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        
+</body>
+</html>
