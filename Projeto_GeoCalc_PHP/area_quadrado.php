@@ -11,7 +11,7 @@ medida de um lado por ele mesmo.</p>
  <p><strong>Fórmula:</strong> A = Lado² (A = l²)</p>
  <form action="" method="POST">
  <label for="lado">Digite a medida do lado (cm):</label>
- <input type="number" step="0.01" name="lado" id="lado" required>
+ <input type="number" step="0.01" name="lado" id="lado" required><br>
  <button type="submit">Calcular</button>
  </form>
  <?php
