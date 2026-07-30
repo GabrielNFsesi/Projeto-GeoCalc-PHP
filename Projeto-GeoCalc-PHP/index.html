@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoCalc PHP</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .btn-seta {
+            background: none;
+            border: 2px solid #007bff;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-seta:hover:not(:disabled) {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-seta:disabled {
+            border-color: #ccc;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .contador {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: #333;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-calcular {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: background-color 0.2s;
+        }
+
+        .btn-calcular:hover {
+            background-color: #218838;
+        }
+
+        .botao_home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+
+            background-color: #007bff;
+            color: white;
+
+            text-decoration: none;
+
+            padding: 10px 18px;
+            border-radius: 8px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .botao_home:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="header-nav">
+        <button class="btn-seta" id="ant" onclick="trocar(-1)">
+            &laquo;
+        </button>
+
+        <span class="contador" id="contadorPasso">1 / 10</span>
+
+        <button class="btn-seta" id="prox" onclick="trocar(1)">
+            &raquo;
+        </button>
+    </div>
+
+    <h2 id="titulo">Área do Quadrado</h2>
+
+    <a id="calcular" class="btn-calcular" href="area_quadrado.php">
+        Calcular
+    </a>
+
+</div>
+
+<a href="index.html" class="botao_home">GeoCalc</a>
+
+<script>
+
+let pagina = 0;
+
+let figuras = [
+    ["Área do Quadrado", "area_quadrado.php"],
+    ["Área do Retângulo", "area_retangulo.php"],
+    ["Área do Triângulo", "area_triangulo.php"],
+    ["Área do Círculo", "area_circulo.php"],
+    ["Área do Trapézio", "area_trapezio.php"],
+    ["Volume do Cubo", "volume_cubo.php"],
+    ["Volume do Paralelepípedo", "volume_paralelepipedo.php"],
+    ["Volume do Cilindro", "volume_cilindro.php"],
+    ["Volume do Cone", "volume_cone.php"],
+    ["Volume da Esfera", "volume_esfera.php"]
+];
+
+function atualizar() {
+
+    document.getElementById("titulo").innerHTML = figuras[pagina][0];
+
+    document.getElementById("calcular").href = figuras[pagina][1];
+
+    document.getElementById("contadorPasso").innerHTML =
+        (pagina + 1) + " / " + figuras.length;
+
+    if (pagina == 0) {
+        document.getElementById("ant").disabled = true;
+    } else {
+        document.getElementById("ant").disabled = false;
+    }
+
+    if (pagina == figuras.length - 1) {
+        document.getElementById("prox").disabled = true;
+    } else {
+        document.getElementById("prox").disabled = false;
+    }
+
+}
+
+function trocar(valor) {
+
+    pagina = pagina + valor;
+
+    if (pagina < 0) {
+        pagina = 0;
+    }
+
+    if (pagina >= figuras.length) {
+        pagina = figuras.length - 1;
+    }
+
+    atualizar();
+
+}
+
+atualizar();
+
+</script>
+
+</body>
+</html>
